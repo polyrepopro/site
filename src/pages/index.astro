@@ -1,0 +1,19 @@
+---
+import Header from "$src/components/header.astro";
+import BaseHead from "../components/base-head.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="bg-slate-900 text-slate-100 antialiased">
+    <header class="absolute z-30 w-full bg-black">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <Header />
+      </div>
+    </header>
+  </body><!-- <SiteLayout /> -->
+</html>
