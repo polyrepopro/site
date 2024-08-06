@@ -1,0 +1,29 @@
+---
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/base.css";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <title>Polyrepo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="/src/scripts/main.js"></script>
+  </head>
+
+  <body
+    class="font-inter antialiased bg-slate-900 text-slate-100 tracking-tight"
+  >
+    <div
+      class="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip"
+    >
+      <Header />
+      <main class="grow">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
