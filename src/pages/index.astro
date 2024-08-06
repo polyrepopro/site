@@ -1515,7 +1515,7 @@ import Layout from "~/layouts/layout.astro";
                     height="16"
                   >
                     <path
-                      d="M14 14H2a1 1 0 0 0 0 2h12a1 1 0 0 0 0-2ZM7.293 11.707a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414L9 8.586V1a1 1 0 1 0-2 0v7.586L3.707 5.293a1 1 0 0 0-1.414 1.414l5 5Z"
+                      d="M14.6.085 8 2.885 1.4.085c-.5-.2-1.4-.1-1.4.9v11c0 .4.2.8.6.9l7 3c.3.1.5.1.8 0l7-3c.4-.2.6-.5.6-.9v-11c0-1-.9-1.1-1.4-.9ZM2 2.485l5 2.1v8.8l-5-2.1v-8.8Zm12 8.8-5 2.1v-8.7l5-2.1v8.7Z"
                     ></path>
                   </svg>
                   <h4 class="font-medium text-slate-50">Data export</h4>
@@ -2485,11 +2485,14 @@ import Layout from "~/layouts/layout.astro";
         </div>
         <!-- Carousel data and functionality: https://github.com/alpinejs/alpine -->
         <script>
+          import Alpine from "alpinejs";
+
           document.addEventListener("alpine:init", () => {
             Alpine.data("carousel", () => ({
               active: 0,
               autorotate: true,
               autorotateTiming: 7000,
+              autorotateInterval: undefined as number | undefined,
               items: [
                 {
                   img: "./images/testimonial-01.jpg",
@@ -2526,13 +2529,16 @@ import Layout from "~/layouts/layout.astro";
               },
               stopAutorotate() {
                 clearInterval(this.autorotateInterval);
-                this.autorotateInterval = null;
+                this.autorotateInterval = undefined;
               },
               heightFix() {
                 this.$nextTick(() => {
                   this.$refs.testimonials.style.height =
-                    this.$refs.testimonials.children[this.active + 1]
-                      .offsetHeight + "px";
+                    (
+                      this.$refs.testimonials.children[
+                        this.active + 1
+                      ] as HTMLElement
+                    ).offsetHeight + "px";
                 });
               },
             }));
