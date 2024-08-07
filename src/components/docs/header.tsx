@@ -28,10 +28,8 @@ function TopLevelNavItem({
 
 export const Header = forwardRef<
   React.ElementRef<"div">,
-  React.ComponentPropsWithoutRef<typeof motion.div>
->(function Header({ className, ...props }, ref) {
-  // let { isOpen: mobileNavIsOpen } = useMobileNavigationStore();
-  // let isInsideMobileNavigation = useIsInsideMobileNavigation();
+  React.ComponentPropsWithoutRef<typeof motion.div> & { currentPath: string }
+>(function Header({ className, currentPath, ...props }, ref) {
   const mobileNavIsOpen = false;
   const isInsideMobileNavigation = false;
 
@@ -68,7 +66,7 @@ export const Header = forwardRef<
       />
       <span className="hidden lg:block"></span>
       <div className="flex items-center gap-5 lg:hidden">
-        <MobileNavigation />
+        <MobileNavigation currentPath={currentPath} />
         <a href="/" aria-label="Home">
           <Logo className="h-6" />
         </a>

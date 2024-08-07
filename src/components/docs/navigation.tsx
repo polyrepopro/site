@@ -1,6 +1,4 @@
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
-
 import { Button } from "~/components/docs/button";
 import { remToPx } from "~/lib/rem-to-px";
 
@@ -72,52 +70,38 @@ function ActivePageMarker({
   let top = offset + activePageIndex * itemHeight;
 
   return (
-    <motion.div
-      layout
-      className="absolute left-2 h-6 w-px bg-emerald-500"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      style={{ top }}
-    />
+    <div className="absolute left-2 h-6 w-px bg-emerald-500" style={{ top }} />
   );
 }
 
 function NavigationGroup({
   group,
   className,
+  currentPath,
 }: {
   group: NavGroup;
   className?: string;
+  currentPath: string;
 }) {
-  const pathname = window.location.pathname;
-  const isActiveGroup = group.links.some((link) => link.href === pathname);
+  const isActiveGroup = group.links.some((link) => link.href === currentPath);
 
   return (
     <li className={clsx("relative mt-6", className)}>
-      <motion.h2
-        layout="position"
-        className="text-xs font-semibold text-zinc-900 dark:text-white"
-      >
+      <h2 className="text-xs font-semibold text-zinc-900 dark:text-white">
         {group.title}
-      </motion.h2>
+      </h2>
       <div className="relative mt-3 pl-2">
-        <motion.div
-          layout
-          className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
-        />
-        <AnimatePresence initial={false}>
-          {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={pathname} />
-          )}
-        </AnimatePresence>
+        <div className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5" />
+        {isActiveGroup && (
+          <ActivePageMarker group={group} pathname={currentPath} />
+        )}
         <ul role="list" className="border-l border-transparent">
           {group.links.map((link) => (
-            <motion.li key={link.href} layout="position" className="relative">
-              <NavLink href={link.href} active={link.href === pathname}>
+            <li key={link.href} className="relative">
+              <NavLink href={link.href} active={link.href === currentPath}>
                 {link.title}
               </NavLink>
-            </motion.li>
+            </li>
           ))}
         </ul>
       </div>
@@ -135,7 +119,10 @@ export const navigation: Array<NavGroup> = [
   },
 ];
 
-export function Navigation(props: React.ComponentPropsWithoutRef<"nav">) {
+export function Navigation({
+  currentPath,
+  ...props
+}: React.ComponentPropsWithoutRef<"nav"> & { currentPath: string }) {
   return (
     <nav {...props}>
       <ul role="list">
@@ -147,6 +134,7 @@ export function Navigation(props: React.ComponentPropsWithoutRef<"nav">) {
             key={group.title}
             group={group}
             className={groupIndex === 0 ? "md:mt-0" : ""}
+            currentPath={currentPath}
           />
         ))}
         <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">

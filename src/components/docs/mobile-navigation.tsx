@@ -44,18 +44,19 @@ const IsInsideMobileNavigationContext = createContext(false);
 function MobileNavigationDialog({
   isOpen,
   close,
+  currentPath,
 }: {
   isOpen: boolean;
   close: () => void;
+  currentPath: string;
 }) {
-  const pathname = window.location.pathname;
-  let initialPathname = useRef(pathname).current;
+  let initialPathname = useRef(currentPath).current;
 
   useEffect(() => {
-    if (pathname !== initialPathname) {
+    if (currentPath !== initialPathname) {
       close();
     }
-  }, [pathname, close, initialPathname]);
+  }, [currentPath, close, initialPathname]);
 
   function onClickDialog(event: React.MouseEvent<HTMLDivElement>) {
     if (!(event.target instanceof HTMLElement)) {
@@ -63,11 +64,7 @@ function MobileNavigationDialog({
     }
 
     let link = event.target.closest("a");
-    if (
-      link &&
-      link.pathname + link.search + link.hash ===
-        window.location.pathname + window.location.search + window.location.hash
-    ) {
+    if (link && link.pathname + link.search + link.hash === currentPath) {
       close();
     }
   }
@@ -86,7 +83,10 @@ function MobileNavigationDialog({
 
       <DialogPanel>
         <TransitionChild>
-          <Header className="data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in" />
+          <Header
+            className="data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+            currentPath={currentPath}
+          />
         </TransitionChild>
 
         <TransitionChild>
@@ -94,7 +94,7 @@ function MobileNavigationDialog({
             layoutScroll
             className="fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 ring-zinc-900/7.5 duration-500 ease-in-out data-[closed]:-translate-x-full min-[416px]:max-w-sm sm:px-6 sm:pb-10 dark:bg-zinc-900 dark:ring-zinc-800"
           >
-            <Navigation />
+            <Navigation currentPath={currentPath} />
           </motion.div>
         </TransitionChild>
       </DialogPanel>
@@ -118,7 +118,7 @@ export const useMobileNavigationStore = create<{
   toggle: () => set((state) => ({ isOpen: !state.isOpen })),
 }));
 
-export function MobileNavigation() {
+export function MobileNavigation({ currentPath }: { currentPath: string }) {
   let isInsideMobileNavigation = useIsInsideMobileNavigation();
   let { isOpen, toggle, close } = useMobileNavigationStore();
   let ToggleIcon = isOpen ? XIcon : MenuIcon;
@@ -135,7 +135,11 @@ export function MobileNavigation() {
       </button>
       {!isInsideMobileNavigation && (
         <Suspense fallback={null}>
-          <MobileNavigationDialog isOpen={isOpen} close={close} />
+          <MobileNavigationDialog
+            isOpen={isOpen}
+            close={close}
+            currentPath={currentPath}
+          />
         </Suspense>
       )}
     </IsInsideMobileNavigationContext.Provider>
