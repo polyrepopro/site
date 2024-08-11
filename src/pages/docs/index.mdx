@@ -2,10 +2,7 @@
 layout: ../../layouts/docs.astro
 ---
 
-import { Button } from "~/components/docs/button";
-import { HeroPattern } from "~/components/docs/hero-pattern";
-
-<HeroPattern />
+import Button from "~/components/docs/button.svelte";
 
 # API Documentation
 
@@ -13,9 +10,9 @@ Use the Protocol API to access contacts, conversations, group messages, and more
 
 <div className="not-prose mb-16 mt-6 flex gap-3">
   <Button href="/quickstart" arrow="right">
-    <>Quickstart</>
+    Quickstart
   </Button>
   <Button href="/sdks" variant="outline">
-    <>Explore SDKs</>
+    Explore SDKs
   </Button>
 </div>

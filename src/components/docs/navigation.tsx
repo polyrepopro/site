@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { Button } from "~/components/docs/button";
 import { remToPx } from "~/lib/rem-to-px";
 
 interface NavGroup {
@@ -138,9 +137,9 @@ export function Navigation({
           />
         ))}
         <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-          <Button href="#" variant="filled" className="w-full">
+          {/* <button href="#" variant="filled" className="w-full">
             Sign in
-          </Button>
+          </button> */}
         </li>
       </ul>
     </nav>
