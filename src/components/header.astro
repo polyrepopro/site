@@ -1,30 +1,157 @@
-<div class="flex h-16 items-center justify-between md:h-20">
-  <!-- Site branding -->
-  <div class="flex flex-1 items-center">
-    <svg class="h-12 w-12 fill-slate-400" viewBox="17.6278 25.1024 28.9512 28.9512" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M 32.404 39.327 L 30.737 39.327 L 30.737 35.344 L 32.404 35.344 C 32.819 35.344 33.162 35.429 33.456 35.587 C 33.752 35.761 33.972 35.98 34.144 36.275 C 34.314 36.569 34.388 36.912 34.388 37.33 C 34.388 37.745 34.302 38.088 34.132 38.394 C 33.96 38.69 33.74 38.925 33.444 39.082 C 33.15 39.242 32.808 39.327 32.404 39.327 Z M 28.641 28.92 C 29.044 28.92 29.375 28.589 29.375 28.186 C 29.375 27.779 29.044 27.448 28.641 27.448 C 28.235 27.448 27.904 27.779 27.904 28.186 C 27.904 28.589 28.235 28.92 28.641 28.92 Z M 31.718 27.018 C 31.311 27.018 30.98 27.351 30.98 27.755 C 30.98 28.159 31.311 28.491 31.718 28.491 C 36.999 28.491 41.377 32.204 42.272 37.292 L 35.467 33.259 C 36.008 33.651 36.448 34.155 36.792 34.742 C 37.221 35.504 37.441 36.36 37.441 37.317 C 37.441 38.274 37.221 39.144 36.804 39.904 C 36.376 40.676 35.761 41.289 35.001 41.718 C 34.242 42.147 33.385 42.37 32.428 42.37 L 30.737 42.37 L 30.737 45.309 C 30.737 45.714 30.588 46.081 30.32 46.365 C 30.036 46.659 29.644 46.831 29.217 46.831 C 29.067 46.831 28.921 46.805 28.775 46.768 L 33.934 49.71 C 33.224 49.859 32.476 49.945 31.718 49.945 C 25.808 49.945 21.002 45.139 21.002 39.229 C 21.002 36.485 22.044 33.872 23.92 31.874 C 24.2 31.58 24.188 31.114 23.894 30.831 C 23.602 30.55 23.136 30.562 22.852 30.855 C 20.694 33.124 19.518 36.09 19.518 39.218 C 19.518 45.948 24.985 51.415 31.718 51.415 C 38.447 51.415 43.915 45.948 43.915 39.218 C 43.915 32.106 38.423 27.018 31.718 27.018 Z M 25.796 30.145 C 26.202 30.145 26.532 29.815 26.532 29.41 C 26.532 29.003 26.202 28.675 25.796 28.675 C 25.39 28.675 25.06 29.003 25.06 29.41 C 25.06 29.815 25.39 30.145 25.796 30.145 Z"
-        transform="matrix(1.1866719722747803, 0, 0, 1.1866719722747803, -5.533614158630371, -6.95907020568848)"></path>
-    </svg>
-  </div>
+<header class="absolute w-full z-30">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Site branding -->
+      <div class="flex-1">
+        <!-- Logo -->
+        <a class="inline-flex" href="/" aria-label="Cruip">
+          <img
+            class="max-w-none"
+            src="./images/logo.svg"
+            width="38"
+            height="38"
+            alt="Stellar"
+          />
+        </a>
+      </div>
 
-  <nav class="hidden md:flex md:grow">
-    <ul class="flex grow flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
-      <li>
-        <a class="transition duration-500 ease-in-out hover:text-white" href="about.html">About</a>
-      </li>
-      <li>
-        <a class="transition duration-500 ease-in-out hover:text-white" href="integrations.html">Integrations</a>
-      </li>
-      <li>
-        <a class="transition duration-500 ease-in-out hover:text-white" href="pricing.html">Pricing</a>
-      </li>
-      <li>
-        <a class="transition duration-500 ease-in-out hover:text-white" href="customers.html">Customers</a>
-      </li>
-      <li>
-        <a class="transition duration-500 ease-in-out hover:text-white" href="changelog.html">Changelog</a>
-      </li>
-    </ul>
-  </nav>
-</div>
+      <!-- Desktop navigation -->
+      <nav class="hidden md:flex md:grow">
+        <!-- Desktop menu links -->
+        <ul class="flex grow justify-center flex-wrap items-center">
+          <li>
+            <a
+              class="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
+              href="/about">About</a
+            >
+          </li>
+          <li>
+            <a
+              class="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
+              href="/integrations">Integrations</a
+            >
+          </li>
+          <li>
+            <a
+              class="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
+              href="/pricing">Pricing</a
+            >
+          </li>
+          <li>
+            <a
+              class="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
+              href="/customers">Customers</a
+            >
+          </li>
+          <li>
+            <a
+              class="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
+              href="/changelog">Changelog</a
+            >
+          </li>
+          <li>
+            <a
+              class="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
+              href="/docs">Docs</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Desktop sign in links -->
+      <ul class="flex-1 flex justify-end items-center">
+        <li>
+          <a
+            class="font-medium text-sm text-slate-300 hover:text-white whitespace-nowrap transition duration-150 ease-in-out"
+            href="signin.html">Sign in</a
+          >
+        </li>
+        <li class="ml-6">
+          <a
+            class="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out w-full group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none"
+            href="signup.html"
+          >
+            <span class="relative inline-flex items-center">
+              Sign up <span
+                class="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1"
+                >-&gt;</span
+              >
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile menu -->
+      <div
+        class="md:hidden flex items-center ml-4"
+        x-data="{ expanded: false }"
+      >
+        <!-- Hamburger button -->
+        <button
+          class="hamburger"
+          :class="{ 'active': expanded }"
+          @click.stop="expanded = !expanded"
+          aria-controls="mobile-nav"
+          :aria-expanded="expanded"
+        >
+          <span class="sr-only">Menu</span>
+          <svg
+            class="w-5 h-5 fill-current text-slate-300 hover:text-white transition duration-150 ease-in-out"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect y="2" width="20" height="2" rx="1"></rect>
+            <rect y="9" width="20" height="2" rx="1"></rect>
+            <rect y="16" width="20" height="2" rx="1"></rect>
+          </svg>
+        </button>
+
+        <!-- Mobile navigation -->
+        <nav
+          id="mobile-nav"
+          class="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out"
+          x-ref="mobileNav"
+          :style="expanded ? 'max-height: ' + $refs.mobileNav.scrollHeight + 'px; opacity: 1' : 'max-height: 0; opacity: .8'"
+          @click.outside="expanded = false"
+          @keydown.escape.window="expanded = false"
+          x-cloak
+        >
+          <ul
+            class="border border-transparent [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] rounded-lg px-4 py-1.5"
+          >
+            <li>
+              <a
+                class="flex font-medium text-sm text-slate-300 hover:text-white py-1.5"
+                href="/about">About</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex font-medium text-sm text-slate-300 hover:text-white py-1.5"
+                href="/integrations">Integrations</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex font-medium text-sm text-slate-300 hover:text-white py-1.5"
+                href="/pricing">Pricing</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex font-medium text-sm text-slate-300 hover:text-white py-1.5"
+                href="/customers">Customers</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex font-medium text-sm text-slate-300 hover:text-white py-1.5"
+                href="/docs">Docs</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
