@@ -1,6 +1,7 @@
 ---
 import { Astronav, MenuIcon, MenuItems } from "astro-navbar";
 import Button from "~/components/docs/button.svelte";
+import Navigation from "~/components/docs/navigation.astro";
 import ThemeToggle from "~/components/docs/theme-toggle.svelte";
 ---
 
@@ -31,7 +32,7 @@ import ThemeToggle from "~/components/docs/theme-toggle.svelte";
     </div>
     <MenuItems class="hidden lg:hidden">
       <div class="fixed inset-0 top-14">
-        <nav
+        <!-- <nav
           class="p-6 bg-white dark:bg-zinc-900 shadow-[0_4px_12px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_12px_rgba(255,255,255,0.1)]"
         >
           <ul role="list" class="flex flex-col gap-6">
@@ -60,7 +61,10 @@ import ThemeToggle from "~/components/docs/theme-toggle.svelte";
               </a>
             </li>
           </ul>
-        </nav>
+        </nav> -->
+        <Navigation
+          className="p-6 bg-white dark:bg-zinc-900 shadow-[0_4px_12px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_12px_rgba(255,255,255,0.1)]"
+        />
       </div>
     </MenuItems>
   </Astronav>

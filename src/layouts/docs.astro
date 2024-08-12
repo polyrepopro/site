@@ -3,8 +3,6 @@ import Footer from "~/components/docs/footer.astro";
 import Header from "~/components/docs/header.astro";
 import Logo from "~/components/docs/logo.astro";
 import Navigation from "~/components/docs/navigation.astro";
-
-const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -24,10 +22,7 @@ const currentPath = Astro.url.pathname;
               </a>
             </div>
             <Header />
-            <Navigation
-              className="hidden lg:mt-10 lg:block"
-              currentPath={currentPath}
-            />
+            <Navigation className="hidden lg:mt-10 lg:block" />
           </div>
         </div>
         <div class="relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8">

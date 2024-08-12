@@ -3,11 +3,10 @@ import { clsx } from "clsx";
 import { remToPx } from "~/lib/rem-to-px";
 
 interface Props {
-  currentPath: string;
   className?: string;
 }
 
-const { currentPath, className = "" } = Astro.props;
+const { className = "" } = Astro.props;
 
 interface NavLink {
   title: string;
@@ -28,6 +27,8 @@ const navigation: NavGroup[] = [
     ],
   },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class={className}>
