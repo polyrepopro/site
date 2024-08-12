@@ -8,7 +8,7 @@ AOS.init({
   once: true,
   disable: "phone",
   duration: 1000,
-  easing: "ease-out-cubic",
+  easing: "ease-out-cubic"
 });
 
 const clientsEl = document.querySelectorAll(".clients-carousel");
@@ -24,8 +24,8 @@ if (clientsEl.length > 0) {
     noSwipingClass: "swiper-slide",
     autoplay: {
       delay: 0,
-      disableOnInteraction: true,
-    },
+      disableOnInteraction: true
+    }
   });
 }
 
@@ -35,14 +35,14 @@ if (carouselEl.length > 0) {
   const carousel = new Swiper(".stellar-carousel", {
     breakpoints: {
       320: {
-        slidesPerView: 1,
+        slidesPerView: 1
       },
       640: {
-        slidesPerView: 2,
+        slidesPerView: 2
       },
       1024: {
-        slidesPerView: 3,
-      },
+        slidesPerView: 3
+      }
     },
     grabCursor: true,
     loop: false,
@@ -51,8 +51,8 @@ if (carouselEl.length > 0) {
     spaceBetween: 24,
     navigation: {
       nextEl: ".carousel-next",
-      prevEl: ".carousel-prev",
-    },
+      prevEl: ".carousel-prev"
+    }
   });
 }
 
@@ -67,16 +67,16 @@ class ParticleAnimation {
     this.settings = {
       quantity: quantity,
       staticity: staticity,
-      ease: ease,
+      ease: ease
     };
     this.circles = [];
     this.mouse = {
       x: 0,
-      y: 0,
+      y: 0
     };
     this.canvasSize = {
       w: 0,
-      h: 0,
+      h: 0
     };
     this.onMouseMove = this.onMouseMove.bind(this);
     this.initCanvas = this.initCanvas.bind(this);
@@ -145,7 +145,7 @@ class ParticleAnimation {
       targetAlpha,
       dx,
       dy,
-      magnetism,
+      magnetism
     };
   }
 
@@ -177,8 +177,7 @@ class ParticleAnimation {
 
   // This function remaps a value from one range to another range
   remapValue(value, start1, end1, start2, end2) {
-    const remapped =
-      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
+    const remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
     return remapped > 0 ? remapped : 0;
   }
 
@@ -190,40 +189,22 @@ class ParticleAnimation {
         circle.x + circle.translateX - circle.size, // distance from left edge
         this.canvasSize.w - circle.x - circle.translateX - circle.size, // distance from right edge
         circle.y + circle.translateY - circle.size, // distance from top edge
-        this.canvasSize.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
+        this.canvasSize.h - circle.y - circle.translateY - circle.size // distance from bottom edge
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = this.remapValue(
-        closestEdge,
-        0,
-        20,
-        0,
-        1
-      ).toFixed(2);
+      const remapClosestEdge = this.remapValue(closestEdge, 0, 20, 0, 1).toFixed(2);
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;
-        if (circle.alpha > circle.targetAlpha)
-          circle.alpha = circle.targetAlpha;
+        if (circle.alpha > circle.targetAlpha) circle.alpha = circle.targetAlpha;
       } else {
         circle.alpha = circle.targetAlpha * remapClosestEdge;
       }
       circle.x += circle.dx;
       circle.y += circle.dy;
-      circle.translateX +=
-        (this.mouse.x / (this.settings.staticity / circle.magnetism) -
-          circle.translateX) /
-        this.settings.ease;
-      circle.translateY +=
-        (this.mouse.y / (this.settings.staticity / circle.magnetism) -
-          circle.translateY) /
-        this.settings.ease;
+      circle.translateX += (this.mouse.x / (this.settings.staticity / circle.magnetism) - circle.translateX) / this.settings.ease;
+      circle.translateY += (this.mouse.y / (this.settings.staticity / circle.magnetism) - circle.translateY) / this.settings.ease;
       // circle gets out of the canvas
-      if (
-        circle.x < -circle.size ||
-        circle.x > this.canvasSize.w + circle.size ||
-        circle.y < -circle.size ||
-        circle.y > this.canvasSize.h + circle.size
-      ) {
+      if (circle.x < -circle.size || circle.x > this.canvasSize.w + circle.size || circle.y < -circle.size || circle.y > this.canvasSize.h + circle.size) {
         // remove the circle from the array
         this.circles.splice(i, 1);
         // create a new circle
@@ -238,7 +219,7 @@ class ParticleAnimation {
             y: circle.y,
             translateX: circle.translateX,
             translateY: circle.translateY,
-            alpha: circle.alpha,
+            alpha: circle.alpha
           },
           true
         );
@@ -254,7 +235,7 @@ canvasElements.forEach((canvas) => {
   const options = {
     quantity: canvas.dataset.particleQuantity,
     staticity: canvas.dataset.particleStaticity,
-    ease: canvas.dataset.particleEase,
+    ease: canvas.dataset.particleEase
   };
   new ParticleAnimation(canvas, options);
 });
@@ -266,11 +247,11 @@ class Highlighter {
     this.boxes = Array.from(this.container.children);
     this.mouse = {
       x: 0,
-      y: 0,
+      y: 0
     };
     this.containerSize = {
       w: 0,
-      h: 0,
+      h: 0
     };
     this.initContainer = this.initContainer.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -293,10 +274,8 @@ class Highlighter {
       this.mouse.x = x;
       this.mouse.y = y;
       this.boxes.forEach((box) => {
-        const boxX =
-          -(box.getBoundingClientRect().left - rect.left) + this.mouse.x;
-        const boxY =
-          -(box.getBoundingClientRect().top - rect.top) + this.mouse.y;
+        const boxX = -(box.getBoundingClientRect().left - rect.left) + this.mouse.x;
+        const boxY = -(box.getBoundingClientRect().top - rect.top) + this.mouse.y;
         box.style.setProperty("--mouse-x", `${boxX}px`);
         box.style.setProperty("--mouse-y", `${boxY}px`);
       });
